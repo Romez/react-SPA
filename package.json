@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --inline --hot",
-    "dev": "SET NODE_ENV=development && npm run start",
-    "prod": "SET NODE_ENV=production && webpack",
+    "dev": "export NODE_ENV=development && npm run start",
+    "prod": "export NODE_ENV=production && webpack",
     "lint": "eslint ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,7 +32,12 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "history": "^4.6.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.1.1",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.6.0"
   }
 }
