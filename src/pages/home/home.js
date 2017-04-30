@@ -1,12 +1,73 @@
 import React from 'react';
+import Input from '../../components/ui/input/index';
+import { bindAll } from 'lodash';
+import './styles.less';
 
 export default class HomePage extends React.Component {
     static path = '/';
 
-    render() {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todoName: '',
+            todos: [
+                {
+                    id: 1,
+                    name: 'Todo 1'
+                }
+            ],
+            error: ''
+        };
+
+        bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
+    }
+
+    inputOnChange(value) {
+        this.setState({ todoName: value });
+    }
+
+    addTodo() {
+        if (this.state.todoName === '') {
+            this.setState({ error: 'Поле следует заполнить' });
+            return;
+        }
+
+        const id = this.state.todos[this.state.todos.length - 1].id + 1;
+        const name = this.state.todoName;
+
+        const todos = this.state.todos;
+        todos.push({id, name});
+
+        this.setState({ todos });
+        this.setState({ todoName: '', error: '' });
+    }
+
+    renderTodos(item, idx) {
         return (
-            <div>
-                <div className='alert alert-success'>Hi</div>
+            <li key={ idx }>{ item.name }</li>
+        );
+    }
+
+    render() {
+        const { todoName, todos, error } = this.state;
+
+        return (
+            <div className='row-fluid b-home'>
+                <div className='col-xs-12'>
+                    <ul>
+                        { todos.map(this.renderTodos) }
+                    </ul>
+                    <div className='col-xs-4'>
+                        <Input
+                            value={ todoName }
+                            onChange={ this.inputOnChange }
+                            error={ error }
+                        />
+                        <button onClick={ this.addTodo } className='btn btn-primary'>Add to do</button>
+                    </div>
+
+                </div>
             </div>
         );
     }
