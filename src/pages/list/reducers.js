@@ -1,3 +1,5 @@
+import { EDIT_ITEM } from './actions';
+
 const initailState = {
     items: [
         {
@@ -30,6 +32,14 @@ const initailState = {
 
 function listReducer(state = initailState, action){
     switch (action.type) {
+        case EDIT_ITEM:
+            const idx = state.items.findIndex(item => item.id === action.id);
+            state.items[idx].name = action.name;
+            state.items[idx].youtube = action.youtube;
+            return Object.assign({}, state, {
+                items: state.items
+            });
+
         default:
             return state;
     }
