@@ -9,11 +9,14 @@ export default class Header extends React.Component {
             <nav className='navbar navbar-default'>
                 <div className='container-fluid'>
                     <div className='navbar-header'>
-                        <Link className='navbar-brand' to='/'>Brand</Link>
+                        <Link className='navbar-brand' to='/'>React SPA</Link>
                     </div>
                     <ul className='nav navbar-nav'>
                         <li>
                             <Link to='/'>Home</Link>
+                        </li>
+                        <li>
+                            <Link to='/list'>List</Link>
                         </li>
                         <li>
                             <Link to='/contact'>Contact</Link>

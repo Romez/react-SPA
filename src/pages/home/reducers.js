@@ -1,14 +1,14 @@
-import { ADD_TODO, LIKE_TODO, DELETE_TODO } from './actions';
+import {
+    ADD_TODO,
+    LIKE_TODO,
+    DELETE_TODO,
+    GET_TODOS
+} from './actions';
 
 const initialState = {
-    todos: [
-        {
-            id: 1,
-            name: 'Todo 1',
-            liked: false
-        }
-    ],
-    error: ''
+    todos: [],
+    error: '',
+    isLoading: true
 };
 
 function homeReducer(state = initialState, action) {
@@ -19,12 +19,10 @@ function homeReducer(state = initialState, action) {
                 todos.push({ id: action.id, name: action.name, liked: false});
             }
 
-            const obj = Object.assign({}, state, {
+            return Object.assign({}, state, {
                 error: action.error,
                 todos
             });
-
-            return obj;
 
         case LIKE_TODO:
             const idx = state.todos.findIndex(todo => todo.id === action.todo.id);
@@ -35,6 +33,13 @@ function homeReducer(state = initialState, action) {
         case DELETE_TODO:
             const filteredTodos = state.todos.filter(todo => todo.id !== action.todo.id);
             return Object.assign({}, state, { todos: filteredTodos });
+
+        case GET_TODOS:
+            return Object.assign({}, state, {
+                todos: action.todos,
+                isLoading: false
+            });
+
         default:
             return state;
     }
