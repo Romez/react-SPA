@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
-export default class Input extends React.Component {
+export default class Textarea extends React.Component {
     static propTypes = {
         value: PropTypes.string.isRequired,
         onChange: PropTypes.func.isRequired,
@@ -27,18 +27,19 @@ export default class Input extends React.Component {
     render() {
         const divClasses = classnames({
             'form-group': true,
-            'has-error': this.props.error ? true : false
+            'has-error': !!this.props.error
         });
 
         const { value } = this.props;
 
         return (
             <div className={ divClasses }>
-                <input
+                <textarea
+                    cols='50' rows='10'
                     type='text'
                     value={ value }
                     onChange={ this.handleChange }
-                    className='form-control'
+                    className='form-control b-contact--text-field'
                 />
                 { this.props.error ? <span className='help-block'>{ this.props.error }</span> : null }
             </div>

@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
+import { connect } from 'react-redux';
+import { addTodo, likeTodo, deleteTodo } from './actions';
+import classnames from 'classnames';
 import './styles.less';
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component {
     static path = '/';
+    static propTypes = {
+        home: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
+    };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            todoName: '',
-            todos: [
-                {
-                    id: 1,
-                    name: 'Todo 1'
-                }
-            ],
-            error: ''
+            todoName: ''
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
@@ -28,29 +28,44 @@ export default class HomePage extends React.Component {
     }
 
     addTodo() {
-        if (this.state.todoName === '') {
-            this.setState({ error: 'Поле следует заполнить' });
-            return;
-        }
-
-        const id = this.state.todos[this.state.todos.length - 1].id + 1;
+        const { todos } = this.props.home;
+        const id = todos[todos.length - 1].id + 1;
         const name = this.state.todoName;
-
-        const todos = this.state.todos;
-        todos.push({id, name});
-
-        this.setState({ todos });
-        this.setState({ todoName: '', error: '' });
+        this.props.dispatch( addTodo(id, name) );
+        this.setState({ todoName: '' });
     }
 
     renderTodos(item, idx) {
+        const todoClasses = classnames('b-home-todo', {
+            'liked': item.liked
+        });
+
+        const btnClasses = classnames('btn', {
+            'active': item.liked
+        });
+
         return (
-            <li key={ idx }>{ item.name }</li>
+            <li key={ idx }>
+                <span className={ todoClasses }>{ item.name }</span>
+                <button onClick={ this.deleteTodo.bind(this, item) } className='btn'><i className='glyphicon glyphicon-remove' /></button>
+                <button onClick={ this.likeTodo.bind(this, item) } className={ btnClasses }>
+                    <i className='glyphicon glyphicon-heart' />
+                </button>
+            </li>
         );
     }
 
+    likeTodo(todo) {
+        this.props.dispatch( likeTodo(todo) );
+    }
+
+    deleteTodo(todo) {
+        this.props.dispatch( deleteTodo(todo) );
+    }
+
     render() {
-        const { todoName, todos, error } = this.state;
+        const { todoName } = this.state;
+        const { todos, error } = this.props.home;
 
         return (
             <div className='row-fluid b-home'>
@@ -64,7 +79,7 @@ export default class HomePage extends React.Component {
                             onChange={ this.inputOnChange }
                             error={ error }
                         />
-                        <button onClick={ this.addTodo } className='btn btn-primary'>Add to do</button>
+                        <button onClick={ this.addTodo } className='btn btn-primary b-home-submit'>Add to do</button>
                     </div>
 
                 </div>
@@ -72,3 +87,11 @@ export default class HomePage extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        home: state.home
+    };
+}
+
+export default connect(mapStateToProps)(HomePage);
