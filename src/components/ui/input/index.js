@@ -6,6 +6,7 @@ export default class Input extends React.Component {
         value: PropTypes.string.isRequired,
         onChange: PropTypes.func.isRequired,
         divClasses: PropTypes.string,
+        placeholder: PropTypes.string,
         error: PropTypes.string
     };
 
@@ -30,7 +31,7 @@ export default class Input extends React.Component {
             'has-error': this.props.error ? true : false
         });
 
-        const { value } = this.props;
+        const { value, placeholder } = this.props;
 
         return (
             <div className={ divClasses }>
@@ -39,6 +40,7 @@ export default class Input extends React.Component {
                     value={ value }
                     onChange={ this.handleChange }
                     className='form-control'
+                    placeholder={ placeholder }
                 />
                 { this.props.error ? <span className='help-block'>{ this.props.error }</span> : null }
             </div>

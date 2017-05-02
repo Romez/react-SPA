@@ -1,4 +1,4 @@
-import { EDIT_ITEM, DELETE_ITEM } from './actions';
+import { EDIT_ITEM, DELETE_ITEM, ADD_ITEM } from './actions';
 
 const initailState = {
     items: [
@@ -30,7 +30,7 @@ const initailState = {
     ]
 };
 
-function listReducer(state = initailState, action){
+function listReducer(state = initailState, action) {
     switch (action.type) {
         case EDIT_ITEM:
             const idx = state.items.findIndex(item => item.id === action.id);
@@ -42,6 +42,15 @@ function listReducer(state = initailState, action){
 
         case DELETE_ITEM:
             state.items = state.items.filter(item => item.id !== action.id);
+
+            return Object.assign({}, state, {
+                items: state.items
+            });
+
+        case ADD_ITEM:
+            const id = state.items[state.items.length - 1].id + 1;
+
+            state.items.push({ id, name: action.name, youyube: action.youtube});
 
             return Object.assign({}, state, {
                 items: state.items

@@ -2,18 +2,25 @@ import React, { PropTypes } from 'react';
 import bindAll from 'lodash';
 import { connect } from 'react-redux';
 import ListItem from './list-item';
+import { addItem } from './actions';
+import { openModal } from '../../components/modal/index';
+import AddModal from './modals/add-modal';
+
 
 class ListPage extends React.Component {
     static path = '/list';
-    static PropTypes = {
-        dispatch: PropTypes.func.isRequired,
-        list: PropTypes.object.isRequired
+
+    static propTypes = {
+        list: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
     };
 
     constructor(props) {
         super(props);
 
         bindAll(this, ['renderItems']);
+
+        this.add = this.add.bind(this);
     }
 
     renderItems(item, idx) {
@@ -27,6 +34,15 @@ class ListPage extends React.Component {
         );
     }
 
+    add() {
+        this.props.dispatch( openModal({
+            content: <AddModal
+                onAdd={ addItem }
+            />,
+            title: 'Добавить'
+        }) );
+    }
+
     render() {
         const { items } = this.props.list;
 
@@ -34,6 +50,9 @@ class ListPage extends React.Component {
             <div className='row'>
                 <div className='col-xs-12'>
                     <h3>List</h3>
+
+                    <button onClick={ this.add } className='btn btn-primary btn-add'>Добавить</button>
+
                     <table className='table table-bordered table-hover'>
                         <thead>
                         <tr>
