@@ -39,6 +39,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "history": "^4.6.1",
+    "is_js": "^0.9.0",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

@@ -1,15 +1,8 @@
-export const ADD_TEXT = 'ADD_TEXT';
+export const SUBMIT_FORM = 'SUBMIT_FORM';
 
-export function addText(value) {
-    let error = '';
-    if (!value) {
-        error = 'Следует заполнить';
-    }
-
+export function submitForm(name, email) {
     return {
-        type: ADD_TEXT,
-        value,
-        info: value,
-        error
+        type: SUBMIT_FORM,
+        name, email
     };
 }

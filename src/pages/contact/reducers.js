@@ -1,22 +1,16 @@
-import { ADD_TEXT } from './actions';
+import { SUBMIT_FORM } from './actions';
 
 const initialState = {
-    info: '',
-    value: '',
-    error: ''
+    name: '',
+    email: ''
 };
 
 function contactReducer(state = initialState, action) {
     switch (action.type) {
-        case ADD_TEXT:
-            let info = state.info;
-            if (!action.error) {
-                info = action.value;
-            }
-
+        case SUBMIT_FORM:
             return Object.assign({}, state, {
-                error: action.error,
-                info
+                name: action.name,
+                email: action.email
             });
         default:
             return state;
@@ -24,7 +18,7 @@ function contactReducer(state = initialState, action) {
 }
 
 const ContactReducer = {
-    contact: contactReducer
+    user: contactReducer
 };
 
 export default ContactReducer;
