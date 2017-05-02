@@ -4,6 +4,8 @@ import {
     DELETE_TODO,
     GET_TODOS
 } from './actions';
+import { isEmpty, isObject } from 'lodash';
+
 
 const initialState = {
     todos: [],
@@ -14,14 +16,15 @@ const initialState = {
 function homeReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_TODO:
-            const todos = state.todos;
             if (!action.error) {
-                todos.push({ id: action.id, name: action.name, liked: false});
+                if ( isEmpty(state.todos) && isObject(state.todos)) state.todos = [];
+
+                state.todos.push({ id: action.id, name: action.name, liked: false});
             }
 
             return Object.assign({}, state, {
                 error: action.error,
-                todos
+                todos: state.todos
             });
 
         case LIKE_TODO:

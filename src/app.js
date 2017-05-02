@@ -19,7 +19,7 @@ export default class App extends React.Component {
                 <TopAlert />
                 <Header />
                 { this.props.children }
-                { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }
+                { NODE_ENV !== 'production' ? <DevTools /> : null }
             </div>
         );
     }
