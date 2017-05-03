@@ -50,7 +50,7 @@ function listReducer(state = initailState, action) {
         case ADD_ITEM:
             const id = state.items[state.items.length - 1].id + 1;
 
-            state.items.push({ id, name: action.name, youyube: action.youtube});
+            state.items.push({ id, name: action.name, youtube: action.youtube});
 
             return Object.assign({}, state, {
                 items: state.items
