@@ -19,6 +19,9 @@ export default class Header extends React.Component {
                             <Link to='/list'>List</Link>
                         </li>
                         <li>
+                            <Link to='/video'>Video</Link>
+                        </li>
+                        <li>
                             <Link to='/contact'>Contact</Link>
                         </li>
                         <li>
