@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import bindAll from 'lodash';
 import { connect } from 'react-redux';
 import ListItem from './list-item';
 import { addItem } from './actions';
-import { openModal } from '../../components/modal/index';
+import { openModal } from '../../components/modal';
 import AddModal from './modals/add-modal';
 
 

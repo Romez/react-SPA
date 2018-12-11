@@ -1,6 +1,7 @@
-import React, {PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { bindAll } from 'lodash';
-import { store } from '../../index';
+import { store } from '../..';
 import './styles.less';
 
 export default class ItemDetails extends React.Component {
@@ -44,6 +45,7 @@ export default class ItemDetails extends React.Component {
                         </div>
                         <div className='panel-body'>
                             <iframe
+                                title={this.state.id}
                                 src={`https://www.youtube.com/embed/${ this.state.youtube }`}
                                 frameBorder='0'
                                 allowFullScreen

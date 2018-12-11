@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DevTools } from './utils/index';
-import { Header } from './components/index';
-import { Modal } from './components/modal/index';
-import { TopAlert } from './components/top-alert/index';
+import { Header } from './components';
+import { Modal } from './components/modal';
+import { TopAlert } from './components/top-alert';
 
 export default class App extends React.Component {
     static path = '/';
@@ -19,7 +18,6 @@ export default class App extends React.Component {
                 <TopAlert />
                 <Header />
                 { this.props.children }
-                { NODE_ENV !== 'production' ? <DevTools /> : null }
             </div>
         );
     }

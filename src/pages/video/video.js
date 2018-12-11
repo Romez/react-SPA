@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import bindAll from 'lodash';
 import './styles.less';
@@ -23,6 +24,7 @@ class VideoPage extends React.Component {
         return (
             <li key={i}>
                 <iframe
+                    title={i}
                     src={`https://www.youtube.com/embed/${ item.youtube }`}
                     frameBorder='0'
                     allowFullScreen

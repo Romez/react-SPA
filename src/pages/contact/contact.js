@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
-import Input from '../../components/ui/input/index';
+import React  from 'react';
+import PropTypes from 'prop-types'
+import Input from '../../components/ui/input';
 import { bindAll } from 'lodash';
 import './styles.less';
 import is from 'is_js';

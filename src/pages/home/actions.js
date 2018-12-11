@@ -1,4 +1,4 @@
-import { LS, delay } from '../../utils/index';
+import { LS, delay } from '../../utils';
 
 export const ADD_TODO = 'ADD_TODO';
 export const LIKE_TODO = 'LIKE_TODO';

@@ -1,25 +1,21 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './app';
+import { Switch } from 'react-router';
 
-import { HomePage, HomeRoutes } from './pages/home/index';
-import { ContactRoutes } from './pages/contact/index';
-import { AboutRoutes } from './pages/about/index';
-import { ListRoutes } from './pages/list/index';
-import { VideoRoutes } from './pages/video/index';
+import { HomeRoutes } from './pages/home';
+import { ContactRoutes } from './pages/contact';
+import { AboutRoutes } from './pages/about';
+import { ListRoutes } from './pages/list';
+import { VideoRoutes } from './pages/video';
 
-import ErrorPage from './pages/error/index';
+import ErrorPage from './pages/error';
 
 export default (
-    <Route component={ App } path={ App.path }>
-        <IndexRoute component={ HomePage } />
-
+    <Switch>
         { HomeRoutes }
         { ContactRoutes }
         { AboutRoutes }
         { ListRoutes }
         { VideoRoutes }
-
-        <Route path='*' component={ ErrorPage } />
-    </Route>
+        { ErrorPage }
+    </Switch>
 );

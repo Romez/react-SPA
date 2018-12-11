@@ -1,2 +1,2 @@
-export AboutPage from './about';
-export AboutRoutes from './routes';
+export {default as AboutPage} from './about';
+export {default as AboutRoutes} from './routes';

@@ -1,6 +1,5 @@
 import  { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
-import { DevTools } from './utils/index';
 import thunk from 'redux-thunk';
 
 function _getMiddleware() {
@@ -13,8 +12,7 @@ function _getMiddleware() {
 
 export default function configureStore(initialState) {
     const store = compose(
-        _getMiddleware(),
-        DevTools.instrument()
+        _getMiddleware()
     )(createStore)(rootReducer, initialState);
 
     return store;

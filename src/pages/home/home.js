@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
-import Input from '../../components/ui/input/index';
-import Loader from '../../components/ui/loader/index';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Input from '../../components/ui/input';
+import Loader from '../../components/ui/loader';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
 import {
@@ -10,7 +11,7 @@ import {
     getTodos
 } from './actions';
 import classnames from 'classnames';
-import { LS } from '../../utils/index';
+import { LS } from '../../utils';
 
 import './styles.less';
 

@@ -1,3 +1,3 @@
-export ContactPage from './contact';
-export ContactRoutes from './routes';
-export ContactReducer from './reducers';
+export {default as ContactPage} from './contact';
+export {default as ContactRoutes} from './routes';
+export {default as ContactReducer} from './reducers';

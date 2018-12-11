@@ -1,3 +1,3 @@
-export ListPage from './list';
-export ListRoutes from './routes';
-export ListReducer from './reducers';
+export {default as ListPage} from './list';
+export {default as ListRoutes} from './routes';
+export {default as ListReducer} from './reducers';

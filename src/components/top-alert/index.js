@@ -1,1 +1,1 @@
-export TopAlert from './component';
+export {default as TopAlert} from './component';

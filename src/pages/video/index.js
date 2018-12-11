@@ -1,3 +1,3 @@
-export VideoPage from './video';
-export VideoRoutes from './routes';
-export VideoReducer from './reducers';
+export {default as VideoPage} from './video';
+export {default as VideoRoutes} from './routes';
+export {default as VideoReducer} from './reducers';
