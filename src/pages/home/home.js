@@ -13,7 +13,7 @@ import {
 import classnames from 'classnames';
 import { LS } from '../../utils';
 
-import './styles.less';
+import './styles.scss';
 
 class HomePage extends React.Component {
     static path = '/';

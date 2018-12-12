@@ -9,11 +9,11 @@ class TopAlert extends React.Component {
     };
 
     removeMargin() {
-        document.querySelector('#app').classList.remove('m-t-50');
+        document.querySelector('#root').classList.remove('m-t-50');
     }
 
     addMargin() {
-        document.querySelector('#app').classList.add('m-t-50');
+        document.querySelector('#root').classList.add('m-t-50');
     }
 
     render() {

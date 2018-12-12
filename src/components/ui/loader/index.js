@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.less';
+import './styles.scss';
 
 export default class Loader extends React.Component {
     render() {
